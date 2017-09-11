@@ -35,10 +35,33 @@
 		}
 
 		.audio_wrp {
-			border: 1px solid #ebebeb;
-			background-color: #fcfcfc;
-			overflow: hidden;
-			padding: 12px 20px 12px 12px;
+			padding: 10px;
+			position: absolute;
+			width: 40%;
+			color: #fff;
+			background: #A0E75A;
+			border: 1px solid #e0e0e0;
+			border-radius: 4px;
+			-webkit-border-radius: 4px;
+			margin-left: 10px;
+		}
+
+		.audio_wrp:before {
+			content: "";
+			display: inline-block;
+			-webkit-transform: rotate(-145deg);
+			-ms-transform: rotate(-145deg);
+			transform: rotate(-145deg);
+			height: 12px;
+			width: 12px;
+			border-width: 1px;
+			border-color: #A0E75A;
+			border-style: solid;
+			position: absolute;
+			top: 14px;
+			left: -5px;
+			background: #A0E75A;
+			z-index: 10000;
 		}
 
 		.audio_play_area {
@@ -65,7 +88,7 @@
 		}
 
 		.audio_play_area .icon_audio_playing {
-			background: transparent url(img/iconloop.png) no-repeat 0 0;
+			background: transparent url(img/iconloop_white.png) no-repeat 0 0;
 			width: 18px;
 			height: 25px;
 			vertical-align: middle;
@@ -150,7 +173,7 @@
 
 	<body>
 		<p class="weixinAudio">
-			<audio src="" id="media" width="1" height="1" preload></audio>
+			<audio src="sound/sound.mp3" id="media" width="1" height="1" preload></audio>
 			<span id="audio_area" class="db audio_area">
 			<span class="audio_wrp db">
 			<span class="audio_play_area">
@@ -159,8 +182,8 @@
             </span>
 			<span id="audio_length" class="audio_length tips_global">3:07</span>
 			<span class="db audio_info_area">
-                <strong class="db audio_title">Title/标题</strong>
-                <span class="audio_source tips_global">From/来源</span>
+                <strong class="db audio_title">留声DEMO</strong>
+                <span class="audio_source tips_global">网易云音乐</span>
 			</span>
 			<span id="audio_progress" class="progress_bar" style="width: 0%;"></span>
 			</span>
@@ -170,10 +193,20 @@
 	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 	<script src="js/weixinAudio.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript">
-		$('.weixinAudio').weixinAudio({
-			autoplay:true,
-			src:'sound/sound.mp3',
-		});
+		// 修改了返回的对象,以前的无法接收
+        var weixinAudioObj = $('.weixinAudio').weixinAudio();
+        // 添加单一播放的逻辑
+        $('.weixinAudio').on('click',function(event) {
+            var $this = $(this);
+            var currentIndex = $this.index();
+            // 遍历所有对象，找到非当前点击，执行pause()方法;
+            $.each(weixinAudioObj,function(i, el) {
+                if(i != 'weixinAudio'+currentIndex){
+                    el.pause();
+                }
+            });
+        });
+	</script>
 	</script>
 
 </html>
