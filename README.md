@@ -1,12 +1,12 @@
 ## weixinAudio.js 
 
-####一个简单的微信样式播放器
+#### 一个简单的微信样式播放器
 
 播放器DOM及CSS是微信里内置的音频播放器的样式，重新创建了控制层js，方便在在公众号，APP等场景使用。
 
 ### 截图
 
-![](https://ws3.sinaimg.cn/large/006tKfTcly1fjfxrz92djg30bo02jwzk.gif)
+![](https://ws4.sinaimg.cn/large/006tKfTcly1fjfxx7rxikj30sm05s0t3.jpg)
 
 ### 如何使用
 
