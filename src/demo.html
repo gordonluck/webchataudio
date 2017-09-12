@@ -9,6 +9,9 @@
 	<link type="text/css" rel="stylesheet" href="css/app.css">
 
 	<body>
+		<div class=""></div>
+		<div></div>
+		<div></div>
 		<div class="weixinAudio">
 			<audio src="sound/sound.mp3" class="WeChatAudio" width="1" height="1" preload></audio>
 			<div class="db audio_area">
@@ -45,20 +48,39 @@
 			</div>
 		</div>
 
+		<div class="weixinAudio">
+			<audio src="sound/sound.mp3" class="WeChatAudio" width="1" height="1" preload></audio>
+			<div class="db audio_area">
+				<div class="audio_wrp db">
+					<div class="audio_play_area">
+						<i class="icon_audio_default"></i>
+						<i class="icon_audio_playing"></i>
+					</div>
+					<div class="audio_length tips_global">0:00</div>
+					<div class="db audio_info_area">
+						<strong class="db audio_title">留声DEMO</strong>
+						<span class="audio_source tips_global">网易云音乐</span>
+					</div>
+					<div class="progress_bar" style="width: 0%;"></div>
+				</div>
+			</div>
+		</div>
+
 
 	</body>
 	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 	<script src="js/weixinAudio.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript">
-		// 修改了返回的对象,以前的无法接收
         var weixinAudioObj = $('.weixinAudio').weixinAudio();
         // 添加单一播放的逻辑
         $('.weixinAudio').on('click',function(event) {
             var $this = $(this);
-            var currentIndex = $this.index();
+            var currentIndex = $this.index('.weixinAudio');
+            alert("currentIndex = " + currentIndex);
             // 遍历所有对象，找到非当前点击，执行pause()方法;
             $.each(weixinAudioObj,function(i, el) {
                 if(i != 'weixinAudio'+currentIndex){
+                    alert("i = " + i);
                     el.pause();
                 }
             });
