@@ -76,11 +76,9 @@
         $('.weixinAudio').on('click',function(event) {
             var $this = $(this);
             var currentIndex = $this.index('.weixinAudio');
-            alert("currentIndex = " + currentIndex);
             // 遍历所有对象，找到非当前点击，执行pause()方法;
             $.each(weixinAudioObj,function(i, el) {
                 if(i != 'weixinAudio'+currentIndex){
-                    alert("i = " + i);
                     el.pause();
                 }
             });
