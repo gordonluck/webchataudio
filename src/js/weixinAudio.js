@@ -112,13 +112,17 @@
             },
             //更新总时间
             updateTotalTime: function() {
-                var self = this,
-                    time = self.Audio.duration,
-                    minutes = self.getAudioMinutes(time),
-                    seconds = self.getAudioSeconds(time),
-                    audioTime = minutes + ":" + seconds;
-                self.$audio_length.text(audioTime);
+                var self = this;
+                self.$Audio.on('canplay',
+                    function() {
+                        var time = self.Audio.duration,
+                            minutes = self.getAudioMinutes(time),
+                            seconds = self.getAudioSeconds(time),
+                            audioTime = minutes + ":" + seconds;
+                        self.$audio_length.text(audioTime);
+                    })
             },
+
             //改变音频源
             changeSrc:function(src,callback){
                 var self = this;
