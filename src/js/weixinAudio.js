@@ -9,11 +9,11 @@
             //dom
             this.$context = $context;
 
-            this.$Audio = $context.children('#media');
+            this.$Audio = $context.children('.WeChatAudio');
             this.Audio = this.$Audio[0];
-            this.$audio_area = $context.find('#audio_area');
-            this.$audio_length = $context.find('#audio_length');
-            this.$audio_progress = $context.find('#audio_progress');
+            this.$audio_area = $context.find('.audio_area');
+            this.$audio_length = $context.find('.audio_length');
+            this.$audio_progress = $context.find('.progress_bar');
             //属性
             this.currentState = 'pause';
             this.time = null;
